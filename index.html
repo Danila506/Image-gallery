@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="./src/output.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    </head>
+    <body
+        class="bg-gradient-to-tl from-[#A04970] to-[#3B7F99] min-h-screen flex justify-center"
+    >
+        <div class="w-full px-16 py-10 bg-black/20 rounded-lg">
+            <h1
+                class="mb-16 text-5xl sm:text-6xl font-bold text-center uppercase tracking-wider bg-clip-text text-transparent bg-gradient-to-tl from-[#A04970] to-[#3B7F99] bg-[length:200%_200%] animate-gradient-shift hover:opacity-80 transition-opacity duration-300"
+            >
+                Image Gallery
+            </h1>
+
+            <div class="mb-8 p-4 bg-white/10 rounded-lg">
+                <h2 class="text-2xl font-bold text-white mb-4">Добавить изображение</h2>
+                <form id="upload-form" class="space-y-4">
+                    <div>
+                        <label for="category" class="block text-white">Категория</label>
+                        <select
+                            id="category"
+                            name="category"
+                            class="w-full p-2 rounded-lg bg-[#3B7F99] text-white"
+                            required
+                        >
+                            <option value="animals">Животные</option>
+                            <option value="nature">Природа</option>
+                            <option value="games">Игры</option>
+                            <option value="eat">Еда</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="image" class="block text-white">Изображение</label>
+                        <input
+                            type="file"
+                            id="image"
+                            name="image"
+                            accept="image/*"
+                            class="w-full p-2 rounded-lg bg-white/20 text-white"
+                            required
+                        />
+                    </div>
+                    <button
+                        type="submit"
+                        class="w-full bg-[#A04970] text-white px-4 py-2 rounded-lg hover:bg-[#3B7F99] transition-colors duration-300"
+                    >
+                        Добавить
+                    </button>
+                </form>
+            </div>
+            <ul class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-10">
+                <li>
+                    <button
+                        class="category-btn bg-[#3B7F99] text-white px-4 py-2 md:px-6 md:py-2 rounded-lg hover:bg-[#3B7F99] transition-colors duration-300 text-sm sm:text-base"
+                        data-category="all"
+                    >
+                        Все
+                    </button>
+                </li>
+                <li>
+                    <button
+                        class="category-btn bg-[#A04970] text-white px-4 py-2 md:px-6 md:py-2 rounded-lg hover:bg-[#3B7F99] transition-colors duration-300 text-sm sm:text-base"
+                        data-category="animals"
+                    >
+                        Животные
+                    </button>
+                </li>
+                <li>
+                    <button
+                        class="category-btn bg-[#A04970] text-white px-4 py-2 md:px-6 md:py-2 rounded-lg hover:bg-[#3B7F99] transition-colors duration-300 text-sm sm:text-base"
+                        data-category="nature"
+                    >
+                        Природа
+                    </button>
+                </li>
+                <li>
+                    <button
+                        class="category-btn bg-[#A04970] text-white px-4 py-2 md:px-6 md:py-2 rounded-lg hover:bg-[#3B7F99] transition-colors duration-300 text-sm sm:text-base"
+                        data-category="games"
+                    >
+                        Игры
+                    </button>
+                </li>
+                <li>
+                    <button
+                        class="category-btn bg-[#A04970] text-white px-4 py-2 md:px-6 md:py-2 rounded-lg hover:bg-[#3B7F99] transition-colors duration-300 text-sm sm:text-base"
+                        data-category="eat"
+                    >
+                        Еда
+                    </button>
+                </li>
+            </ul>
+
+            <ul class="grid grid-cols-2  md:grid-cols-4 gap-4" id="image-gallery">
+                <li class="image-item opacity-100 visible" data-category="animals">
+                    <img
+                        class="w-full h-32 sm:h-48 md:h-64 object-cover rounded-lg cursor-pointer"
+                        src="./src/img/animals/animals_1.jpg"
+                        alt="Animal 1"
+                        data-full="./src/img/animals/animals_1.jpg"
+                    />
+                </li>
+                <li class="image-item opacity-100 visible" data-category="animals">
+                    <img
+                        class="w-full h-32 sm:h-48 md:h-64 object-cover rounded-lg cursor-pointer"
+                        src="./src/img/animals/animals_2.jpg"
+                        alt="Animal 2"
+                        data-full="./src/img/animals/animals_2.jpg"
+                    />
+                </li>
+                <li class="image-item opacity-100 visible" data-category="animals">
+                    <img
+                        class="w-full h-32 sm:h-48 md:h-64 object-cover rounded-lg cursor-pointer"
+                        src="./src/img/animals/animals_3.jpg"
+                        alt="Animal 3"
+                        data-full="./src/img/animals/animals_3.jpg"
+                    />
+                </li>
+                <li class="image-item opacity-100 visible" data-category="animals">
+                    <img
+                        class="w-full h-32 sm:h-48 md:h-64 object-cover rounded-lg cursor-pointer"
+                        src="./src/img/animals/animals_4.jpg"
+                        alt="Animal 4"
+                        data-full="./src/img/animals/animals_4.jpg"
+                    />
+                </li>
+                <li class="image-item opacity-100 visible" data-category="animals">
+                    <img
+                        class="w-full h-32 sm:h-48 md:h-64 object-cover rounded-lg cursor-pointer"
+                        src="./src/img/animals/animals_5.jpg"
+                        alt="Animal 5"
+                        data-full="./src/img/animals/animals_5.jpg"
+                    />
+                </li>
+                <li class="image-item opacity-100 visible" data-category="nature">
+                    <img
+                        class="w-full h-32 sm:h-48 md:h-64 object-cover rounded-lg cursor-pointer"
+                        src="./src/img/nature/nature_1.jpg"
+                        alt="Nature 1"
+                        data-full="./src/img/nature/nature_1.jpg"
+                    />
+                </li>
+                <li class="image-item opacity-100 visible" data-category="nature">
+                    <img
+                        class="w-full h-32 sm:h-48 md:h-64 object-cover rounded-lg cursor-pointer"
+                        src="./src/img/nature/nature_2.jpg"
+                        alt="Nature 2"
+                        data-full="./src/img/nature/nature_2.jpg"
+                    />
+                </li>
+                <li class="image-item opacity-100 visible" data-category="nature">
+                    <img
+                        class="w-full h-32 sm:h-48 md:h-64 object-cover rounded-lg cursor-pointer"
+                        src="./src/img/nature/nature_3.jpg"
+                        alt="Nature 3"
+                        data-full="./src/img/nature/nature_3.jpg"
+                    />
+                </li>
+                <li class="image-item opacity-100 visible" data-category="nature">
+                    <img
+                        class="w-full h-32 sm:h-48 md:h-64 object-cover rounded-lg cursor-pointer"
+                        src="./src/img/nature/nature_4.jpg"
+                        alt="Nature 4"
+                        data-full="./src/img/nature/nature_4.jpg"
+                    />
+                </li>
+                <li class="image-item opacity-100 visible" data-category="nature">
+                    <img
+                        class="w-full h-32 sm:h-48 md:h-64 object-cover rounded-lg cursor-pointer"
+                        src="./src/img/nature/nature_5.jpg"
+                        alt="Nature 5"
+                        data-full="./src/img/nature/nature_5.jpg"
+                    />
+                </li>
+                <li class="image-item opacity-100 visible" data-category="games">
+                    <img
+                        class="w-full h-32 sm:h-48 md:h-64 object-cover rounded-lg cursor-pointer"
+                        src="./src/img/games/games_1.jpg"
+                        alt="Game 1"
+                        data-full="./src/img/games/games_1.jpg"
+                    />
+                </li>
+                <li class="image-item opacity-100 visible" data-category="games">
+                    <img
+                        class="w-full h-32 sm:h-48 md:h-64 object-cover rounded-lg cursor-pointer"
+                        src="./src/img/games/games_2.jpg"
+                        alt="Game 2"
+                        data-full="./src/img/games/games_2.jpg"
+                    />
+                </li>
+                <li class="image-item opacity-100 visible" data-category="games">
+                    <img
+                        class="w-full h-32 sm:h-48 md:h-64 object-cover rounded-lg cursor-pointer"
+                        src="./src/img/games/games_3.jpg"
+                        alt="Game 3"
+                        data-full="./src/img/games/games_3.jpg"
+                    />
+                </li>
+                <li class="image-item opacity-100 visible" data-category="games">
+                    <img
+                        class="w-full h-32 sm:h-48 md:h-64 object-cover rounded-lg cursor-pointer"
+                        src="./src/img/games/games_4.jpg"
+                        alt="Game 4"
+                        data-full="./src/img/games/games_4.jpg"
+                    />
+                </li>
+                <li class="image-item opacity-100 visible" data-category="games">
+                    <img
+                        class="w-full h-32 sm:h-48 md:h-64 object-cover rounded-lg cursor-pointer"
+                        src="./src/img/games/games_5.jpg"
+                        alt="Game 5"
+                        data-full="./src/img/games/games_5.jpg"
+                    />
+                </li>
+                <li class="image-item opacity-100 visible" data-category="eat">
+                    <img
+                        class="w-full h-32 sm:h-48 md:h-64 object-cover rounded-lg cursor-pointer"
+                        src="./src/img/eat/eat_1.jpg"
+                        alt="Eat 1"
+                        data-full="./src/img/eat/eat_1.jpg"
+                    />
+                </li>
+                <li class="image-item opacity-100 visible" data-category="eat">
+                    <img
+                        class="w-full h-32 sm:h-48 md:h-64 object-cover rounded-lg cursor-pointer"
+                        src="./src/img/eat/eat_2.jpg"
+                        alt="Eat 2"
+                        data-full="./src/img/eat/eat_2.jpg"
+                    />
+                </li>
+                <li class="image-item opacity-100 visible" data-category="eat">
+                    <img
+                        class="w-full h-32 sm:h-48 md:h-64 object-cover rounded-lg cursor-pointer"
+                        src="./src/img/eat/eat_3.jpg"
+                        alt="Eat 3"
+                        data-full="./src/img/eat/eat_3.jpg"
+                    />
+                    <li class="image-item opacity-100 visible" data-category="eat">
+                        <img
+                            class="w-full h-32 sm:h-48 md:h-64 object-cover rounded-lg cursor-pointer"
+                            src="./src/img/eat/eat_4.jpg"
+                            alt="Eat 4"
+                            data-full="./src/img/eat/eat_4.jpg"
+                        />
+                    </li>
+                    <li class="image-item opacity-100 visible" data-category="eat">
+                        <img
+                            class="w-full h-32 sm:h-48 md:h-64 object-cover rounded-lg cursor-pointer"
+                            src="./src/img/eat/eat_5.jpg"
+                            alt="Eat 5"
+                            data-full="./src/img/eat/eat_5.jpg"
+                        />
+                    </li>
+            </ul>
+        </div>
+
+        <!-- Модальное окно -->
+        <div id="modal" class="fixed inset-0 bg-black/90 hidden justify-center items-center p-4">
+            <div class="relative">
+                <img id="modal-image" class="max-w-full max-h-screen rounded-lg" src="" alt="" />
+                <button
+                    id="close-modal"
+                    class="absolute -top-2 right-2 text-white text-2xl hover:text-gray-300"
+                >
+                    &times;
+                </button>
+            </div>
+        </div>
+
+        <script src="./src/index.js"></script>
+    </body>
+</html>
